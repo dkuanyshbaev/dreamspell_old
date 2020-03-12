@@ -1,0 +1,41 @@
+{% extends "admin/layout" %}
+
+{% block content %}
+<div class="container">
+    <form action="/admin/tones" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="_method" value="post" />
+
+        <div class="form-group">
+            <label for="image">Изображение</label>
+            <input type="file" accept=".jpg,.png" class="form-control-file" id="image" name="image" aria-describedby="image_help">
+            <small id="image_help" class="form-text text-muted">Выберите изображение в формате jpg или png</small>
+        </div>
+
+        <div class="form-group">
+            <label for="num">Номер</label>
+            <input type="number" name="num" id="num" class="form-control" value=0>
+        </div>
+
+        <div class="form-group">
+            <label for="name">Название</label>
+            <input type="text" class="form-control" id="name" name="name">
+        </div>
+
+        <div class="form-group">
+            <label for="preview">Краткое описание</label>
+            <textarea class="form-control" id="preview" name="preview" rows="10"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="description">Описание</label>
+            <textarea class="form-control" id="description" name="description" rows="10"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-info">Сохранить</button>
+
+        <a href="/admin/tones" class="btn btn-dark">Отмена</a>
+    </form>
+    <br>
+    <br>
+</div>
+{% endblock content %}
