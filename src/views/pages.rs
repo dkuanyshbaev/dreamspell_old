@@ -3,9 +3,7 @@ use crate::{views::NoContext, Db, DreamResult};
 use rocket::http::{Cookie, Cookies};
 use rocket::request::Form;
 use rocket::response::Redirect;
-use rocket::Request;
 use rocket_contrib::templates::Template;
-use std::collections::HashMap;
 
 #[get("/")]
 pub fn index(_connection: Db) -> Template {
@@ -24,7 +22,7 @@ pub fn login(mut cookies: Cookies, login_form: Form<LoginForm>) -> DreamResult<R
 
         Ok(Redirect::to("/admin"))
     } else {
-        Ok(Redirect::to("/admin/login"))
+        Ok(Redirect::to("/login"))
     }
 }
 
@@ -32,17 +30,15 @@ pub fn login(mut cookies: Cookies, login_form: Form<LoginForm>) -> DreamResult<R
 pub fn logout(mut cookies: Cookies) -> Redirect {
     cookies.remove_private(Cookie::named("admin"));
 
-    Redirect::to("/admin/login")
+    Redirect::to("/")
 }
 
 #[catch(404)]
-pub fn not_found(req: &Request) -> Template {
-    let mut map = HashMap::new();
-    map.insert("path", req.uri().path());
-    Template::render("404", &map)
+pub fn not_found() -> Template {
+    Template::render("404", NoContext {})
 }
 
 #[catch(401)]
 pub fn unauthorized() -> Redirect {
-    Redirect::to("/admin/login")
+    Redirect::to("/login")
 }

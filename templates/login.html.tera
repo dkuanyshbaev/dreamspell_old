@@ -8,7 +8,7 @@
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-        <title>Kinderdom - Login</title>
+        <title>Dreamspell - Login</title>
 
         <style>
         html,
@@ -46,8 +46,10 @@
         </style>
     </head>
     <body>
-        <form action="/admin/login" method="post" accept-charset="utf-8" class="form-signin">
+        <form action="/login" method="post" accept-charset="utf-8" class="form-signin">
             <input type="hidden" name="_method" value="post" />
+            <input type="text" class="form-control" name="name" placeholder="Введите имя пользователя" required>
+            <br>
             <input type="password" class="form-control" name="password" placeholder="Введите пароль" required>
             <button class="btn btn-lg btn-info btn-block" type="submit">Вход</button>
         </form>
