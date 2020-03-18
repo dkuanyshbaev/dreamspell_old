@@ -33,6 +33,11 @@ pub fn logout(mut cookies: Cookies) -> Redirect {
     Redirect::to("/")
 }
 
+#[get("/registration")]
+pub fn registration_page() -> Template {
+    Template::render("registration", NoContext {})
+}
+
 #[catch(404)]
 pub fn not_found() -> Template {
     Template::render("404", NoContext {})

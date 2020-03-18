@@ -33,7 +33,13 @@ fn rocket() -> Rocket {
         .mount("/static", StaticFiles::from("static/"))
         .mount(
             "/",
-            routes![pages::index, pages::login_page, pages::login, pages::logout],
+            routes![
+                pages::index,
+                pages::login_page,
+                pages::login,
+                pages::logout,
+                pages::registration_page
+            ],
         )
         .mount("/admin", routes![admin::main])
         .mount(
